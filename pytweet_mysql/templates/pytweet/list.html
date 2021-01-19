@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+  <form action="{{ url_for('create_pytweet') }}" method=post class=create-pytweet>
+    <div class="col-6">
+    <dl>
+      <dt>Author Name:
+      <dd><input type=text size=20 name=author_name class="form-control">
+      <dt>Body:
+      <dd><textarea name=body rows=5 cols=20 class="form-control"></textarea>
+      <dd><input type=submit value=Share class = "btn btn-primary">
+    </dl>
+  </form>
+</div>
+  <ul class="pytweets ml-4">
+  {% for pytweet in pytweets %}
+      <li>
+          <h2>{{ pytweet.author_name }}</h2>
+          <p>{{ pytweet.body|safe }}</p>
+      </li>
+
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em>
+  {% endfor %}
+  </ul>
+{% endblock %}

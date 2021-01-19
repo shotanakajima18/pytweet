@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h2>{{ 'Edit pytweet' if user else 'Create new pytweet'}}</h2>
+  <form action="{{ url_for('edit_pytweet')(5) }}" method="post">
+    <dl>
+      <dt>Author Name:
+      <dd><input type=text size=20 name=author_name value="{{ pytweet.author_name if pytweet }}" class = "form-control">
+      <dt>Body:
+      <dd><input type=text size=50 name=body value="{{ pytweet.body if pytweet }}" class = "form-control">
+
+      <dd><input type=submit value={{ 'save' if user else 'cleate' }} class = "btn btn-primary">
+    </dl>
+  </form>
+{% endblock %}
